@@ -1,7 +1,6 @@
 # Import Dependencies 
-from flask import Flask, render_template
-
-import os 
+from flask import Flask, render_template, redirect
+import pymongo
 import scrape_mars
 
 

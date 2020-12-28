@@ -5,25 +5,31 @@ from bs4 import BeautifulSoup as bs
 import json
 from splinter import Browser
 
+#creating a dictionary to hold all mars facts
+mars = {}
+
 def scrape_all():
 
-    # Creating a path for browser used to scrape dynamic website 
+# Creating a path for browser used to scrape dynamic website 
     chrome_path = 'driver/chromedriver.exe' 
     executable_path = {'executable_path' : chrome_path}
     browser = Browser('chrome', **executable_path, headless=False)
 
-    # Opening news section in browser
+# Opening news section in browser
     news_url = 'https://mars.nasa.gov/news/'
     browser.visit(news_url)
 
-    # Passing the html page to beautiful soup 
+# Passing the html page to beautiful soup 
     news_html = browser.html
     news = bs(news_html, 'html.parser')
 
 
-# Finding the first title and paragraph on the page (lastest news) & assigning variable names 
+# Finding the first title and paragraph on the page and adding to dictionary 
     news_title = news.find_all('div', class_='content_title')[1].text
+    mars.news_title = news_title
     news_p = news.find('div', class_='article_teaser_body').text
+    mars.news_p= news_p
+
 
 # Opening jet propulsion lab website
     jpl_url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
@@ -39,6 +45,7 @@ def scrape_all():
     rel_image_path = jpl.find('article', class_='carousel_item')['style']
     rel_image_path = rel_image_path.split('spaceimages/')[1].split("'")[0]
     featured_image_url = site_dir+rel_image_path
+    mars.featured_image_url = featured_image_url
 
 
 #Opening Mars Facts url 
@@ -55,16 +62,14 @@ def scrape_all():
     mars_facts_df.set_index("Description", inplace=True)
 # Creating an html table to render in the index.html page
     mars_facts_html = mars_facts_df.to_html()
-
+    mars.mars_facts_html = mars_facts_html
 
 #Opening USGS website 
     usgs_url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
     browser.visit(usgs_url)
 
-# Creating a list of dictionaries to store hemisphere images and titles
-    hemisphere_image_urls = [
-        {"title": "Valles Marineris Hemisphere", "img_url": "https://astropedia.astrogeology.usgs.gov/download/Mars/Viking/valles_marineris_enhanced.tif"},
-        {"title": "Cerberus Hemisphere", "img_url": "https://astropedia.astrogeology.usgs.gov/download/Mars/Viking/cerberus_enhanced.tif"},
-        {"title": "Schiaparelli Hemisphere", "img_url": "https://astropedia.astrogeology.usgs.gov/download/Mars/Viking/schiaparelli_enhanced.tif"},
-        {"title": "Syrtis Major Hemisphere", "img_url": "https://astropedia.astrogeology.usgs.gov/download/Mars/Viking/syrtis_major_enhanced.tif"},
-    ]
+
+    
+    browser.quit()
+    return mars
+
