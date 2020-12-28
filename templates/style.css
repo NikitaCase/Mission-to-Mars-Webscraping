@@ -1,0 +1,9 @@
+div.jumbotron {
+    background-color: #eeeeee;
+    border-radius: 10px;
+    padding: 50px 20px;
+}
+
+h1.display4 {
+    font-weight: bold;
+}
