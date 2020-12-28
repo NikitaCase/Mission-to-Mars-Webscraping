@@ -14,7 +14,7 @@
     [https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars]
 
     *
-    [https://space-facts.com/mars/]
+    (https://space-facts.com/mars/)
 
     *
     [https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars]
