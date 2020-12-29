@@ -1,9 +1,9 @@
 # Mission to Mars
-<hr>
+
 <br>
 For this assignment, several webpages were scraped to produce a dictionary of content used to make a Mongo Database and a Flask Application that renders an html file populated with content from the scrape
 <br> 
-## Files
+**Files**
 <br>
 - mission_to_mars.ipynb<br>
 Jupyter notebook where code is run line by line to show that it's scraping the websites. Chromedriver is used to access the websites for scraping. 
@@ -24,7 +24,7 @@ Smallest file that took the longest! Flask app that has a home route which launc
 
 <br>
 <br>
-## Technology used
+**Technology used**
 <br>
 - Python, Jupyter notebooks
 - Mongo and PyMongo 
