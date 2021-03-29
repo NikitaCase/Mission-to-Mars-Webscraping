@@ -1,7 +1,7 @@
 # Mission to Mars
 
 <br>
-For this assignment, several webpages were scraped to produce a dictionary of content used to make a Mongo Database and a Flask Application that renders an html file populated with content from the scrape
+Several webpages were scraped to produce a dictionary of content used to make a Mongo Database and a Flask Application that renders an html file populated with content from the scrape. 
 <br> 
 <br>
 <b>Files</b>
